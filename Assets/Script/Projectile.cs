@@ -5,7 +5,7 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     public GameObject enemy;
-    public float attackPower = 1;
+    public int attackPower = 1;
     public float speed = 20f;           //이동 속도
     public float lifeTime = 2f;        //생존 시간
 
@@ -25,7 +25,7 @@ public class Projectile : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<Enemy>().HitEnemy(attackPower);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(attackPower);
         }
     }
 }
