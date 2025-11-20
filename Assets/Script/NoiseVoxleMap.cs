@@ -48,7 +48,7 @@ public class NoiseVoxleMap : MonoBehaviour
                     }
                     else
                     {
-                        Place(x, y, z);
+                        DirtPlace(x, y, z);
                     }
                 }
                 for (int y = h; y < water; y++)
@@ -58,7 +58,7 @@ public class NoiseVoxleMap : MonoBehaviour
         }
         //Debug.Log((1 + offsetX) / noiseScale);
     }
-    private void Place(int x, int y, int z)
+    private void DirtPlace(int x, int y, int z)
     {
         var go = Instantiate(blockPrefab, new Vector3(x, y, z), Quaternion.identity, transform);
         go.name = $"D_{x}_{y}_{z}";
@@ -91,5 +91,21 @@ public class NoiseVoxleMap : MonoBehaviour
         b.maxHP = 3;
         b.dropCount = 1;
         b.mineable = true;
+    }
+    public void PlaceTile(Vector3Int pos, BlockType type)
+    {
+        switch(type)
+        {
+            case BlockType.Dirt:
+                DirtPlace(pos.x, pos.y, pos.z);
+                break;
+            case BlockType.Grass:
+                GrassPlace(pos.x, pos.y, pos.z);
+                break;
+            case BlockType.Water:
+                WaterPlace(pos.x, pos.y, pos.z);
+                break;
+
+        }
     }
 }
