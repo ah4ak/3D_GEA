@@ -64,7 +64,7 @@ public class NoiseVoxleMap : MonoBehaviour
         go.name = $"D_{x}_{y}_{z}";
 
         var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
-        b.type = BlockType.Dirt;
+        b.type = ItemType.Dirt;
         b.maxHP = 3;
         b.dropCount = 1;
         b.mineable = true;
@@ -76,7 +76,7 @@ public class NoiseVoxleMap : MonoBehaviour
         go.name = $"W_{x}_{y}_{z}";
 
         var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
-        b.type = BlockType.Water;
+        b.type = ItemType.Water;
         b.maxHP = 3;
         b.dropCount = 1;
         b.mineable = false;
@@ -87,22 +87,22 @@ public class NoiseVoxleMap : MonoBehaviour
         go.name = $"G_{x}_{y}_{z}";
 
         var b = go.GetComponent<Block>() ?? go.AddComponent<Block>();
-        b.type = BlockType.Grass;
+        b.type = ItemType.Grass;
         b.maxHP = 3;
         b.dropCount = 1;
         b.mineable = true;
     }
-    public void PlaceTile(Vector3Int pos, BlockType type)
+    public void PlaceTile(Vector3Int pos, ItemType type)
     {
         switch(type)
         {
-            case BlockType.Dirt:
+            case ItemType.Dirt:
                 DirtPlace(pos.x, pos.y, pos.z);
                 break;
-            case BlockType.Grass:
+            case ItemType.Grass:
                 GrassPlace(pos.x, pos.y, pos.z);
                 break;
-            case BlockType.Water:
+            case ItemType.Water:
                 WaterPlace(pos.x, pos.y, pos.z);
                 break;
 
